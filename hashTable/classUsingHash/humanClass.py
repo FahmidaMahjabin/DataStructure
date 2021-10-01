@@ -91,18 +91,18 @@ def getHumans(humanTable, key):
 peoples = getHumans(ageTable, 30)
 print(peoples)
 
-# function = getNameFromHuman
+# function = createNameFromHuman
 # input = listOfHuman 
 # outPut = listOf Name 
 # step1:list of human area theke ekta kore human nibo and human er name property listOfNmae e add korbo 
 # step2:return listOfHuman 
-def getNameFromHuman(listOfHuman):
+def createNameFromHuman(listOfHuman):
     listOfName = []
     for human in listOfHuman:
         listOfName.append(human.name)
     return listOfName
-print(getNameFromHuman(peoples))
-print(getNameFromHuman(softEngineers))
+print(createNameFromHuman(peoples))
+print(createNameFromHuman(softEngineers))
 # print(ageTable.listOfNode)
 # 1.setAgeWiseHuman(ageTable.listOfNode):
 #     1.listOfHuman = ageTable.listOfNode
@@ -164,7 +164,7 @@ import random
 # output = name 
 # step1:a to z ekta list thakbe letters
 # step2:letters theke randomly 3 theke 10 ta letter niye name create korte hobe
-def getName():
+def createName():
     letters = ["a","b", 'c','d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
     numberOfLetters = random.randint(3,10)
     name = "".join(random.sample(letters, numberOfLetters))
@@ -175,10 +175,10 @@ def getName():
 # step3:ekta kore 100k ta jobTile banabo listOf job theke 
 # step4: ekta kore 100k ta salary banabo (range 20000 theke 150000 with a difference of 1000)
 # step5:
-def gethumsns():
+def createHumans():
     humans= []
     for human in range(5):
-        name = getName()
+        name = createName()
         age = random.randint(25, 55)
         listOfJobs = ['engineer', 'software engineer', 'banker', 'accountant', 'HR manager']
         jobTitle = random.choice(listOfJobs)
@@ -186,5 +186,5 @@ def gethumsns():
         human = Human(name, age, jobTitle, salary)
         humans.append(human)
     return humans
-print(gethumsns())
+print(createHumans())
 
