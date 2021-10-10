@@ -8,35 +8,49 @@ class Human():
         self.jobTitle = jobTitle 
         self.salary = salary
     
-    
+import random
 
+# function = getAName 
+# output = name 
+# step1:a to z ekta list thakbe letters
+# step2:letters theke randomly 3 theke 10 ta letter niye name create korte hobe
+def createName():
+    letters = ["a","b", 'c','d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+    numberOfLetters = random.randint(3,10)
+    name = "".join(random.sample(letters, numberOfLetters))
+    return name
+# 100k human object banate hobe 
+# step1:ekta kore 100k ta random name banabo jar letter 3 theke 10 ta hobe 
+# step2:ekta kore 100k ta random age banabo (age range 25 to 60)
+# step3:ekta kore 100k ta jobTile banabo listOf job theke 
+# step4: ekta kore 100k ta salary banabo (range 20000 theke 150000 with a difference of 1000)
+# step5:
 
+def createAge():
+    age = random.randint(25, 55)
+    return age
 
+def createJob():
+    listOfJob = ['engineer', 'software engineer', 'banker', 'accountant', 'HR manager']
+    job = random.choice(listOfJob)
+    return job
 
-def addHuman(human, listOfHuman): 
-    listOfHuman.append(human)
-listOfHuman = []    
-eva = Human("eva", 40, "engineer", 20000)
-addHuman(eva, listOfHuman)
-ayon = Human("ayon", 50, "soft engineer", 30000)
-addHuman(ayon, listOfHuman)
-rakib = Human("rakib", 30, "engineer", 40000)
-addHuman(rakib, listOfHuman)
-konica = Human("konica", 30, "banker", 20000)
-addHuman(konica, listOfHuman)
-umamah = Human("umamah", 25, "engineer", 20000)
-addHuman(umamah, listOfHuman)
-sinthia = Human("sinthia", 30, "engineer", 20000)
-addHuman(sinthia, listOfHuman)
-hashu = Human("hashu", 25, "soft engineer", 20000)
-addHuman(hashu, listOfHuman)
-sristy = Human("sristy", 30, "soft engineer", 40000)
-addHuman(sristy, listOfHuman)
-fahim = Human("fahim", 25, "engineer", 20000)
-addHuman(eva, listOfHuman)
-rakin = Human("rakin", 30, "engineer", 20000)
-addHuman(rakin, listOfHuman)
-print(listOfHuman)
+def createSalary():
+    salary = random.randrange(20000, 100000, 5000)
+    return salary
+
+def createHumans(number):
+    humans= []
+    for human in range(number):
+        name = createName()
+        age = createAge()  
+        jobTitle = createJob()
+        salary = createSalary()
+        human = Human(name, age, jobTitle, salary)
+        humans.append(human)
+    return humans
+
+humans = createHumans(10)
 # problem1: list of human deya thakbe. tader moddhe jader age 30 tader list return korte hobe
 # step1: human list er human age property er value k key hishe and human k value hishebe set korbo
 # step2: ekhon key value 30 er jonno j j value i.e human ase ta list akare return korbo
@@ -54,31 +68,15 @@ def setAgeWiseHuman(humanTable, listOfHuman):
         humanTable.setValue(human.age,human)
     return
 ageTable = HashTable()
-print(setAgeWiseHuman(ageTable, listOfHuman))
+# print(setAgeWiseHuman(ageTable, humans))
+
 # function = get ageTable of age 30
 # input = human er hashTable , age 
 # output = listofhuman  of having age 30
 # step1: humanTable e 30 key er value ase kina check korbo
     # step1.1:jodi thake then linkNode of having key 30 pabo
     # step1.2:linkNode er value er name listOfpeoplrOfAge30 te add korbo
-jobTable = HashTable()
-def setJobWiseHuman(humanTable, listOfHuman):
-    for human in listOfHuman:
-        humanTable.setValue(human.jobTitle, human)
-    return
-print(setJobWiseHuman(jobTable, listOfHuman))
 
-def getHumansWithJob(humanTable, jobTitle):
-    people = []
-    linkedNode = humanTable.getNode(jobTitle)
-    while linkedNode != None:
-        if linkedNode.value.jobTitle == jobTitle:
-            people.append(linkedNode.value)
-        linkedNode = linkedNode.nextPointer
-    return people
-softEngineers = getHumansWithJob(jobTable, "soft engineer")
-
-    
 def getHumans(humanTable, key):
     LLOfThatKey = humanTable.getNode(key)
     peoples = []
@@ -88,8 +86,42 @@ def getHumans(humanTable, key):
             peoples.append(LLOfThatKey.value)
         LLOfThatKey = LLOfThatKey.nextPointer                   
     return peoples
-peoples = getHumans(ageTable, 30)
-print(peoples)
+
+
+# function = get human of age 30 
+# input = list of human 
+# output = Human 
+# step1:list of human theke ekta kore human nibo
+#     step1.1:human er age er value 30 kina check korbo 
+#     step1.2:if age is 30 then append in new list 
+# step2:return newList 
+def getHumanWithAge(listOfHuman, age):
+    humanWithAge = []
+    for human in listOfHuman:
+        if human.age == age:
+            humanWithAge.append(human)
+    return humanWithAge
+# print(getHumanWithAge(humans, 30))
+
+jobTable = HashTable()
+def setJobWiseHuman(humanTable, listOfHuman):
+    for human in listOfHuman:
+        humanTable.setValue(human.jobTitle, human)
+    return
+
+# print(setJobWiseHuman(jobTable, humans))
+def getHumansWithJob(humanTable, jobTitle):
+    people = []
+    linkedNode = humanTable.getNode(jobTitle)
+    while linkedNode != None:
+        if linkedNode.value.jobTitle == jobTitle:
+            people.append(linkedNode.value)
+        linkedNode = linkedNode.nextPointer
+    return people
+# banker = getHumansWithJob(jobTable, "banker")
+
+    
+
 
 # function = createNameFromHuman
 # input = listOfHuman 
@@ -101,8 +133,7 @@ def createNameFromHuman(listOfHuman):
     for human in listOfHuman:
         listOfName.append(human.name)
     return listOfName
-print(createNameFromHuman(peoples))
-print(createNameFromHuman(softEngineers))
+
 # print(ageTable.listOfNode)
 # 1.setAgeWiseHuman(ageTable.listOfNode):
 #     1.listOfHuman = ageTable.listOfNode
@@ -158,33 +189,49 @@ print(createNameFromHuman(softEngineers))
     #     7.2:for human in linkedNodeOfkey30:
     #     7.3:for human in LLofAge30:
     #         7.3.1:peoples.append(human.name)
-import random
 
-# function = getAName 
-# output = name 
-# step1:a to z ekta list thakbe letters
-# step2:letters theke randomly 3 theke 10 ta letter niye name create korte hobe
-def createName():
-    letters = ["a","b", 'c','d', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    numberOfLetters = random.randint(3,10)
-    name = "".join(random.sample(letters, numberOfLetters))
-    return name
-# 100k human object banate hobe 
-# step1:ekta kore 100k ta random name banabo jar letter 3 theke 10 ta hobe 
-# step2:ekta kore 100k ta random age banabo (age range 25 to 60)
-# step3:ekta kore 100k ta jobTile banabo listOf job theke 
-# step4: ekta kore 100k ta salary banabo (range 20000 theke 150000 with a difference of 1000)
-# step5:
-def createHumans():
-    humans= []
-    for human in range(5):
-        name = createName()
-        age = random.randint(25, 55)
-        listOfJobs = ['engineer', 'software engineer', 'banker', 'accountant', 'HR manager']
-        jobTitle = random.choice(listOfJobs)
-        salary = random.randrange(20000, 100000, 1000)
-        human = Human(name, age, jobTitle, salary)
-        humans.append(human)
-    return humans
-print(createHumans())
+
+
+
+
+
+# function = getExecutionTime (ekta function er execution time ber korbo)
+# input = that function 
+# output = execution time 
+# step1:start time ber korbo 
+# step2:oi function call korbo 
+# step3:end time ber korbo 
+# step4:time difference return korbo
+import time 
+from time import process_time
+
+def getExecutionTimeForNaive():
+    startTime = process_time()
+    getHumanWithAge(humans1k, 30)
+    endTime = process_time()
+    return endTime - startTime
+
+def getExecutionTimeForHash():
+    startTime = process_time()
+    getHumans(ageTable, 30)
+    endTime = process_time()
+    return endTime - startTime
+humans1k = createHumans(100000)
+setAgeWiseHuman(ageTable, humans1k)
+peoplesOfAge30 = getHumans(ageTable, 30)
+# print("people having age 30:" ,createNameFromHuman(peoplesOfAge30))
+# print("execution time for age 30 people using hashTable:",getExecutionTime(getHumans(ageTable, 30)))
+timeForNaive = getExecutionTimeForNaive()
+timeForHash = getExecutionTimeForHash()
+print("execution time for age 30 people using naive approach:",timeForNaive)
+print("execution time for age 30 people using hash approach:", timeForHash)
+
+def timeRatio(time1, time2):
+    ratio = time1 / time2 
+    return ratio
+
+print("ration of naive to hash function:",timeRatio(timeForNaive,timeForHash ) )
+# import timeit
+# executionTime = timeit.timeit("getHumans(ageTable, 30)", number = 1, globals = globals())
+# print("execution time for age 30 people using hashTable", executionTime)
 
