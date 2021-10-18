@@ -235,27 +235,25 @@ class BinarySearchTree:
         else:
             currentNode = currentNode.leftChild
             return self.findRightMostNode(currentNode)  
+    
+    
     """function = printInorderTree
     leftsubtree- root- rightsubTree
-    input = node
+    input = rootNode
     output =None
-    step1:if node == None then return
-    step2:printInorderTree(node.leftChild)
-    step3:print(node.value + " ")
-    step4:printInorderTree(node.rightChild)"""
+    step1:if node jodi empty hoy then return nothing
+    step2:else go to the left node and do step1 
+        step2.1:print(node.value + " ")
+        step2.2:go to step1 where root is egual to rightChild"""
     def printInorderTree(self, node):
         if node == None:
             return
         self.printInorderTree(node.leftChild)
-        print(node.value, end = " ")
+        print( node.value)
         self.printInorderTree(node.rightChild)
+    
 
-    def printInorderTree(self, node):
-        while node == None:
-            return
-            node = node.leftchild
-            print(node.value, end = " ")
-            node = node.rightChild
+    
 #     tree1.printInorderTree(node30):
 #         1.self = tree1, node = node30
 #         2.if node == None
@@ -313,11 +311,35 @@ class BinarySearchTree:
         
     """function = printPreOrderTree
     input = node
-    output = none
-    step1:if node == None then return 
-    step2:print node.value
-    step3:call printPreOrderTree where node = node.leftChild
-    step4:call printPreOrderTree where node = node.rightChild"""
+    output = node valu in pre order (left- root-right)
+    step1:if node is empty then return nothing
+    step2:else
+        step2:print node value
+        step3:call printPreOrderTree where node = node.leftChild
+        step4:call printPreOrderTree where node = node.rightChild"""
+
+    def printPreOrderTree(self, node):
+        if node == None:
+            return 
+        else:
+            print(node.value )
+            self.printPreOrderTree(node.leftChild)
+            self.printPreOrderTree(node.rightChild)
+
+    """function = print post order tree(right-left-root)
+    input = rootNode
+    output = tree values
+    step1:jodi node empty hoy then ber hoye ashbo
+    step2:else: node hobe noder left child and go to step1 
+        step2.1:node hobe node er rightChild and go to step1 
+        step2.2:print node value """
+    def printPostOrder(self, node):
+        if node == None:
+            return 
+        else:
+            self.printPostOrder(node.leftChild)
+            self.printPostOrder(node.rightChild)
+            print(node.value)
 
     
     """function = getParentandNode
@@ -381,9 +403,13 @@ age.insertValue(15)
 #             3.1.4: if True 
 #             3.1.5: self.rootNode = node
 #             3.1.6: xyz.rootNode = nodex
-age.insertValue(20)
+age.insertValue(10)
 age.insertValue(50)
 age.hasValue(50)
 print(age.hasValue(50))
 
 print(age.rootNode.rightChild.value)
+age.printInorderTree(age.rootNode)
+
+age.printPreOrderTree(age.rootNode)
+age.printPostOrder(age.rootNode)
