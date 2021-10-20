@@ -388,28 +388,29 @@ class BinarySearchTree:
                 return None, None
             else:
                 return self.getParentandNodefromAncestor(ancestor.rightChild, searchValue)
-age = BinarySearchTree()
-age.insertValue(15)
-# evaluation of age.insertValue(15)
-# 1.xyz.insertValue(15):
-#     self = xyz, value = 15
-#     1.node = Node(value)
-#     2.node = nodex
-#     3.self.insertNode(self.rootNode, node):
-#         3.1:xyz.inserNode(xyz.rootNode, nodex):
-#             3.1.1 self = xyz, currentNode = xyz.rootNode = None, node = nodex
-#             3.1:2 if currentNode == None:
-#             3.1.3:if None == None:
-#             3.1.4: if True 
-#             3.1.5: self.rootNode = node
-#             3.1.6: xyz.rootNode = nodex
-age.insertValue(10)
-age.insertValue(50)
-age.hasValue(50)
-print(age.hasValue(50))
+if __name__ == "__main__":
+    age = BinarySearchTree()
+    age.insertValue(15)
+    # evaluation of age.insertValue(15)
+    # 1.xyz.insertValue(15):
+    #     self = xyz, value = 15
+    #     1.node = Node(value)
+    #     2.node = nodex
+    #     3.self.insertNode(self.rootNode, node):
+    #         3.1:xyz.inserNode(xyz.rootNode, nodex):
+    #             3.1.1 self = xyz, currentNode = xyz.rootNode = None, node = nodex
+    #             3.1:2 if currentNode == None:
+    #             3.1.3:if None == None:
+    #             3.1.4: if True 
+    #             3.1.5: self.rootNode = node
+    #             3.1.6: xyz.rootNode = nodex
+    age.insertValue(10)
+    age.insertValue(50)
+    age.hasValue(50)
+    print(age.hasValue(50))
 
-print(age.rootNode.rightChild.value)
-age.printInorderTree(age.rootNode)
+    print(age.rootNode.rightChild.value)
+    age.printInorderTree(age.rootNode)
 
-age.printPreOrderTree(age.rootNode)
-age.printPostOrder(age.rootNode)
+    age.printPreOrderTree(age.rootNode)
+    age.printPostOrder(age.rootNode)

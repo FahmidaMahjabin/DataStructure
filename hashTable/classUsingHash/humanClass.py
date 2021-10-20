@@ -216,22 +216,26 @@ def getExecutionTimeForHash():
     getHumans(ageTable, 30)
     endTime = process_time()
     return endTime - startTime
-humans1k = createHumans(100000)
-setAgeWiseHuman(ageTable, humans1k)
-peoplesOfAge30 = getHumans(ageTable, 30)
+
 # print("people having age 30:" ,createNameFromHuman(peoplesOfAge30))
 # print("execution time for age 30 people using hashTable:",getExecutionTime(getHumans(ageTable, 30)))
-timeForNaive = getExecutionTimeForNaive()
-timeForHash = getExecutionTimeForHash()
-print("execution time for age 30 people using naive approach:",timeForNaive)
-print("execution time for age 30 people using hash approach:", timeForHash)
+
 
 def timeRatio(time1, time2):
     ratio = time1 / time2 
     return ratio
 
-print("ration of naive to hash function:",timeRatio(timeForNaive,timeForHash ) )
+
 # import timeit
 # executionTime = timeit.timeit("getHumans(ageTable, 30)", number = 1, globals = globals())
 # print("execution time for age 30 people using hashTable", executionTime)
+if __name__ == "__main__":
+    humans1k = createHumans(100000)
+    setAgeWiseHuman(ageTable, humans1k)
+    peoplesOfAge30 = getHumans(ageTable, 30)
+    timeForNaive = getExecutionTimeForNaive()
+    timeForHash = getExecutionTimeForHash()
+    print("execution time for age 30 people using naive approach:",timeForNaive)
+    print("execution time for age 30 people using hash approach:", timeForHash)
+    print("ration of naive to hash function:",timeRatio(timeForNaive,timeForHash ) )
 
