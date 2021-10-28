@@ -77,14 +77,17 @@ class BinarySearchTree:
     #             go to step 1
     # 1.value khujte node keno banano lagse
 
-    #     function = hasValue
+    #     function = getNode
     #     input = value
     #     output = return node if it is found, else False if not found
-    #     1.rootNode er value er sathe input value same kina check korbo 
+    #   1.rootNode empty kina check korbo , jodi empty hoy then return False
+    #     2.else rootNode er value er sathe input value same kina check korbo 
         # 2.same hole return rootNode 
         # 3.else searchNode call korbo
-    def hasValue(self, value):
-        if self.rootNode.value == value:
+    def getNode(self, value):
+        if self.rootNode == None:
+            return False
+        elif self.rootNode.value == value:
             return self.rootNode
         else:
             return self.searchNode(self.rootNode, value)
@@ -181,7 +184,7 @@ class BinarySearchTree:
 #     function = delete
 #     input = value
 #     output = None 
-#     step1: find out the node using hasValue function
+#     step1: find out the node using getNode function
 #     step2:if the node has no leftChild and no rightChild then parentNode er ei child er jaygay None assign korbo
 #     step3:if the node has a leftChild and rightChild None then assign leftChild to the node
 #     step4:if the node has rightChild and leftChild None the assign the rightChild to the node
@@ -193,7 +196,7 @@ class BinarySearchTree:
 
     
     def deleteNode(self, value):
-        node = self.hasValue(value)
+        node = self.getNode(value)
         if node.leftChild == None and node.rightChild == None:
             return self.removeNodeFromParent(node.parentNode, node)
               
@@ -406,8 +409,8 @@ if __name__ == "__main__":
     #             3.1.6: xyz.rootNode = nodex
     age.insertValue(10)
     age.insertValue(50)
-    age.hasValue(50)
-    print(age.hasValue(50))
+    age.getNode(50)
+    print(age.getNode(50))
 
     print(age.rootNode.rightChild.value)
     age.printInorderTree(age.rootNode)
