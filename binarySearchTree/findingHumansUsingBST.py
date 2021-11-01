@@ -47,12 +47,26 @@ class HumanSearchTree(BinarySearchTree):
             humanNode = HumanNode(human.age)
             self.insertNode(self.rootNode, humanNode)
             self.assignHumanWithAge(human)
-            
+    """function = search human with age 
+    input = age
+    output = get the humans of that age 
+    step1:rootNode er key er sathe check korbo age same kina 
+    step2:if same then return that node's humans list 
+    step3:else searchInChild"""
+    def searchHumanWithAge(self, age):
+        if self.rootNode == None:
+            return None
+        else:
+            node = self.searchNode(self.rootNode, age)
+            if node != None:
+                return node.humans
+
 
 humanTree = HumanSearchTree()
 print(humanTree.assignHumanWithAge(human1)) 
 print(humanTree.assignHumanWithAge(human2))
-print("root of humanTree:", humanTree.rootNode.leftChild.value)
+print(humanTree.searchHumanWithAge(25))
+
 # 1.humanTree.assignHumanWithAge(human1)
 # 2.x12.assignHumanWithAge(hum12):
 #     2.1:self = x12, human = hum12
@@ -81,8 +95,23 @@ print("root of humanTree:", humanTree.rootNode.leftChild.value)
 #                 2.6.8.3.2:x12.rootNode = 12node
 
 
+# function = printName
+# input = listOfHumans
+# output = name of humans 
+# step1:listOfHuman theke ekta kore human nibo and er name property ekta list e append korbo 
+# step2:retur the nameList
+def getNames(listOfhuman):
+    names = []
+    for human in listOfhuman:
+        names.append(human.name)
+    return names
 
-
+if __name__ == "__main__":
+    humans100 = createHumans(100)
+    for human in humans100:
+        humanTree.assignHumanWithAge(human)
+    humansOf50 = humanTree.searchHumanWithAge(50)
+    print(getNames(humansOf50))
 
 class Rectangle:  
     def __init__(self, side):

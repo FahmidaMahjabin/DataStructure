@@ -125,7 +125,7 @@ class BinarySearchTree:
     # step2:jodi None na hoy then return the searchNode
     def searchInDescendents(self, currentNode, value):
         if currentNode == None:
-            return False
+            return None
         else: 
             return self.searchNode(currentNode, value)
         
