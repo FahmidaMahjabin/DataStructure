@@ -38,15 +38,15 @@ class HumanSearchTree(BinarySearchTree):
     step2:jodi theke thake then oi human k node er humans e append korbo 
     step3:jodi human na thake then oi age er value diye humanNode create korbo and node e humans e human append korbo
     """
-    def assignHumanWithAge(self, human):
-        existingHuman = self.getNode(human.age)
-        if existingHuman:
-            existingHuman.humans.append(human)
+    def setHumanWithAge(self, human):
+        existingHumanNode = self.getNode(human.age)
+        if existingHumanNode:
+            existingHumanNode.humans.append(human)
             
         else:
             humanNode = HumanNode(human.age)
             self.insertNode(self.rootNode, humanNode)
-            self.assignHumanWithAge(human)
+            self.setHumanWithAge(human)
     """function = search human with age 
     input = age
     output = get the humans of that age 
@@ -63,12 +63,12 @@ class HumanSearchTree(BinarySearchTree):
 
 
 humanTree = HumanSearchTree()
-print(humanTree.assignHumanWithAge(human1)) 
-print(humanTree.assignHumanWithAge(human2))
+print(humanTree.setHumanWithAge(human1)) 
+print(humanTree.setHumanWithAge(human2))
 print(humanTree.searchHumanWithAge(25))
 
-# 1.humanTree.assignHumanWithAge(human1)
-# 2.x12.assignHumanWithAge(hum12):
+# 1.humanTree.setHumanWithAge(human1)
+# 2.x12.setHumanWithAge(hum12):
 #     2.1:self = x12, human = hum12
 #     2.2:existingHuman = self.getNode(human.age)
 #     2.3:existingHuman = x12.getNode(hum12.age)  
@@ -109,7 +109,7 @@ def getNames(listOfhuman):
 if __name__ == "__main__":
     humans100 = createHumans(100)
     for human in humans100:
-        humanTree.assignHumanWithAge(human)
+        humanTree.setHumanWithAge(human)
     humansOf50 = humanTree.searchHumanWithAge(50)
     print(getNames(humansOf50))
 
